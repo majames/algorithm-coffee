@@ -6,12 +6,12 @@
 #
 ###
 merge = (A, B) ->
-  C = [] # temporary storage (merge sort is NOT in place)
+  C = [] # temporary storage dependent on input size  (merge sort is NOT in place)
   i = 0
   j = 0
 
   while(i < A.length && j < B.length)
-    if A[i] < B[j]
+    if A[i] <= B[j]
       C.push(A[i])
       i++
     else
@@ -28,6 +28,9 @@ merge = (A, B) ->
 
 ###
 # Merge Sort Algorithm
+#
+# In-place: No
+# Stable: Yes
 #
 # Run Time: T(n) = O(n*log(n))
 #

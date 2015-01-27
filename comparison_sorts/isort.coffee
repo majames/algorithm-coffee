@@ -4,6 +4,9 @@
 #
 # Insertion Sort Algorithm
 #
+# In-place: Yes
+# Stable: Yes
+#
 # Best Case Run Time: T(n) = O(n)
 # Worst Case Run Time: T(n) = O(n^2)
 #
