@@ -57,12 +57,12 @@ testSort = (sortFunc, A, sortName) ->
 #
 ###
 
-LARGE_TEST_SIZE = 1000
+TEST_SIZE = 1000
 
 # set up the arrays for testing
 arr = []
-for i in [0...LARGE_TEST_SIZE]
-  arr.push(Math.floor(Math.random() * LARGE_TEST_SIZE))
+for i in [0...TEST_SIZE]
+  arr.push(Math.floor(Math.random() * TEST_SIZE))
 
 # test the sorting algorithms
 testSort(ssort.selectionSort, arr, 'Selection Sort')
@@ -71,7 +71,7 @@ testSort(isort.insertionSort, arr, 'Insertion Sort')
 
 testSort(msort.mergeSort, arr, 'Merge Sort')
 
-testSort(qsort.quickSort, arr, 'Quick Sort')
+#testSort(qsort.quickSort, arr, 'Quick Sort')
 
 testSort(qsort2.quickSort, arr, 'Functional Quick Sort')
 

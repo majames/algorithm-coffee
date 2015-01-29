@@ -14,8 +14,8 @@ exports.quickSort = (A) ->
   return [] if A.length <= 0
 
   pivot = A[Math.floor(A.length / 2)]
-  B = quickSort((i for i in A when i < pivot))
+  B = exports.quickSort((i for i in A when i < pivot))
   C = (i for i in A when i == pivot)
-  D = quickSort((i for i in A when i > pivot))
+  D = exports.quickSort((i for i in A when i > pivot))
 
   return B.concat(C).concat(D)

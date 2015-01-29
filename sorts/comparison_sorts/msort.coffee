@@ -1,3 +1,4 @@
+
 ###
 # Merge Sort Algorithm
 #
@@ -12,8 +13,8 @@ exports.mergeSort = (arr) ->
   if (arr.length <= 1)
     return arr
 
-  A = mergeSort(arr[0...arr.length/2])
-  B = mergeSort(arr[arr.length/2...])
+  A = exports.mergeSort(arr[0...arr.length/2])
+  B = exports.mergeSort(arr[arr.length/2...])
   merge(A, B)
 
 ###

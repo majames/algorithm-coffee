@@ -16,8 +16,8 @@ exports.quickSort = (A, start_index, end_index) ->
     return
 
   pivot_index = partition(A, start_index, end_index)
-  quickSort(A, start_index, pivot_index)
-  quickSort(A, pivot_index + 1, end_index)
+  exports.quickSort(A, start_index, pivot_index)
+  exports.quickSort(A, pivot_index + 1, end_index)
 
   return A
 
