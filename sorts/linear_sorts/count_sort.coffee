@@ -6,13 +6,17 @@
 
 
 ###
-# A - the array to be sorted
+# A - the array of non-negative integers to be sorted
 #
 # In-place: No
 # Stable: Yes
+# Modifies original array: No
 #
+# Running Time: T(n) = O(max + n)
+#   n - length of the array A
+#   max - integer in array with the largest value
 ###
-countSort = (A) ->
+exports.countSort = (A) ->
   # Find the maximum and minimum values in the array
   min = Math.min.apply @, A
   max = Math.max.apply @, A
@@ -51,15 +55,4 @@ countSort = (A) ->
   return B
 
 
-###
-# Testing my count sort algorithm
-#
-###
-
-A = []
-for _ in [0...20]
-  A.push(Math.floor(Math.random() * 20))
-
-console.log A...
-console.log countSort(A)...
 

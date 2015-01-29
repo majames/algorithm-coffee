@@ -5,18 +5,21 @@
 #
 # In-place: Yes
 # Stable: No
+# Modifies Original Array: Yes
 #
 # Expected run-time: O(n*log(n))
 # Worst case run-time: O(n^2)
 #
 ###
-quickSort = (A, start_index, end_index) ->
+exports.quickSort = (A, start_index, end_index) ->
   if start_index >= end_index
     return
 
   pivot_index = partition(A, start_index, end_index)
   quickSort(A, start_index, pivot_index)
   quickSort(A, pivot_index + 1, end_index)
+
+  return A
 
 ###
 # Splits the array A into 3 sub-sections:
@@ -44,17 +47,13 @@ partition = (A, start_index, end_index) ->
   # the final pivot position
   return j
 
-
+###
+#
+# Function swaps two values within the array A
+#
+###
 swap = (A, i, j) ->
   tmp = A[i]
   A[i] = A[j]
   A[j] = tmp
 
-
-A = []
-for _ in [0..20]
-  A.push(Math.round(Math.random() * 100))
-
-console.log A...
-quickSort A, 0, A.length
-console.log A...
