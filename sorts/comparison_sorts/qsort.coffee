@@ -11,13 +11,22 @@
 # Worst case run-time: O(n^2)
 #
 ###
-exports.quickSort = (A, start_index, end_index) ->
+
+exports.quickSort = (A) ->
+  quickSortAux(A, 0, A.length)
+
+###
+#
+# A[start_index .. end_index - 1] are valid array entries
+#
+###
+quickSortAux = (A, start_index, end_index) ->
   if start_index >= end_index
     return
 
   pivot_index = partition(A, start_index, end_index)
-  exports.quickSort(A, start_index, pivot_index)
-  exports.quickSort(A, pivot_index + 1, end_index)
+  quickSortAux(A, start_index, pivot_index)
+  quickSortAux(A, pivot_index + 1, end_index)
 
   return A
 

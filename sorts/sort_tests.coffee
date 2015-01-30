@@ -26,10 +26,10 @@ radix_sort = require('./linear_sorts/radix_sort.coffee')
 isSorted = (A, sortName) ->
   for i in [1...A.length]
     if A[i-1] > A[i]
-      console.log "  #{sortName} Fail!\n"
+      process.stdout.write "  #{sortName} Fail! "
       return false
 
-  console.log "  #{sortName} Success!\n"
+  process.stdout.write "  #{sortName} Success! "
   return true
 
 ###
@@ -41,14 +41,19 @@ testSort = (sortFunc, A, sortName) ->
   console.log "Testing #{sortName}:"
 
   B = A.slice()
+
+  # sort the array and time how long it takes
+  start_time = process.hrtime()
   B = sortFunc(B)
+  time_diff = process.hrtime(start_time)
 
   # check whether the sort succeeded
   isSorted(B, sortName)
+  console.log "Sort took #{(time_diff[0] * 1000 + time_diff[1] * 1e-6).toFixed(2)} ms to complete"
 
   # print the first 20 elements of the arrays before and after sorting
-  console.log "  Before: #{A[0...20]}..."
-  console.log "  After:  #{B[0...20]}...\n"
+  console.log "  Before: #{A[0...15]}..."
+  console.log "  After:  #{B[0...15]}...\n"
 
 
 ###
@@ -57,7 +62,7 @@ testSort = (sortFunc, A, sortName) ->
 #
 ###
 
-TEST_SIZE = 1000
+TEST_SIZE = 10000
 
 # set up the arrays for testing
 arr = []
@@ -71,7 +76,7 @@ testSort(isort.insertionSort, arr, 'Insertion Sort')
 
 testSort(msort.mergeSort, arr, 'Merge Sort')
 
-#testSort(qsort.quickSort, arr, 'Quick Sort')
+testSort(qsort.quickSort, arr, 'Quick Sort')
 
 testSort(qsort2.quickSort, arr, 'Functional Quick Sort')
 
